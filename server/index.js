@@ -9,17 +9,18 @@ app.use(cors());
 app.use(express.json());
 
 // Local connect to MongoDB
-// mongoose.connect('mongodb://localhost:27017/authapp', { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => console.log('MongoDB connected'))
-//   .catch(err => console.log(err));
+mongoose
+  .connect('mongodb://localhost:27017/first')
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err, 'Ошибка подключения'));
 
 // Atlas MongoDB online connection
-mongoose
-  .connect(
-    'mongodb+srv://admin:admin@cluster0.r7ukknz.mongodb.net/first?retryWrites=true&w=majority&appName=Cluster0',
-  )
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+// mongoose
+//   .connect(
+//     'mongodb+srv://admin:admin@cluster0.r7ukknz.mongodb.net/first?retryWrites=true&w=majority&appName=Cluster0',
+//   )
+//   .then(() => console.log('MongoDB connected'))
+//   .catch(err => console.log(err));
 
 // Import Routes
 const routes = require('./routes/routes');

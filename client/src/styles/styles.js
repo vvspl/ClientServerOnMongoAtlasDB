@@ -56,4 +56,6 @@ export const adminHeader = {
   alignItems: 'center',
 };
 
-export const addUserInput = { backgroundColor: 'white', m: 1 };
+export const addUserInput = { backgroundColor: 'white', m: 1 }; //Input for SignIn, SignUp forms
+
+export const breadCrumbs = { alignContent: 'center', padding: '10px', color: 'blue' }; //SignIn, SignUp on HomePage

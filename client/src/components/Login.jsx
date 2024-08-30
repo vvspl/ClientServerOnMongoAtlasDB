@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { Box, Button, TextField, Link } from '@mui/material';
 import { header3, loginBox, inputBox } from '../styles/styles';
 import AlertModal from '../components/modals/AlertModal';
@@ -49,46 +50,56 @@ function Login({ setLoginStatus }) {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-      <Box sx={loginBox}>
-        <Box sx={header3}>Login</Box>
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Box sx={inputBox}>
-            <Box sx={{ textAlign: 'center', p: 1 }}>Username</Box>
-            <TextField
-              sx={{ backgroundColor: 'white' }}
-              required
-              id="outlined-name"
-              label="name"
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-              size="small"
-            />
+      <Box
+        sx={{
+          position: 'absolute',
+        }}
+      >
+        <Box sx={loginBox}>
+          <Box sx={header3}>Login</Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box sx={inputBox}>
+              <Box sx={{ textAlign: 'center', p: 1 }}>Username</Box>
+              <TextField
+                sx={{ backgroundColor: 'white' }}
+                required
+                id="outlined-name"
+                label="name"
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+                size="small"
+              />
+            </Box>
+            <Box sx={inputBox}>
+              <Box sx={{ textAlign: 'center', p: 1 }}>Password</Box>
+              <TextField
+                sx={{ backgroundColor: 'white' }}
+                required
+                id="outlined-pass"
+                label="password"
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                size="small"
+              />
+            </Box>
+            <Button sx={{ m: 2 }} variant="contained" onClick={handleLogin}>
+              Login
+            </Button>
+            <Box>Не зарегистрированы?</Box>
+            <Link component="button" variant="body2" onClick={handleRegister}>
+              Зарегистрироваться
+            </Link>
           </Box>
-          <Box sx={inputBox}>
-            <Box sx={{ textAlign: 'center', p: 1 }}>Password</Box>
-            <TextField
-              sx={{ backgroundColor: 'white' }}
-              required
-              id="outlined-pass"
-              label="password"
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              size="small"
-            />
-          </Box>
-          <Button sx={{ m: 2 }} variant="contained" onClick={handleLogin}>
-            Login
-          </Button>
-          <Box>Не зарегистрированы?</Box>
-          <Link component="button" variant="body2" onClick={handleRegister}>
-            Зарегистрироваться
-          </Link>
         </Box>
+        <AlertModal open={open} handleClose={handleClose} text={'Заполните все поля!'} />
       </Box>
-      <AlertModal open={open} handleClose={handleClose} text={'Заполните все поля!'} />
     </Box>
   );
 }
+
+Login.propTypes = {
+  setLoginStatus: PropTypes.func,
+};
 
 export default Login;

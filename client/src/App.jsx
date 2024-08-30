@@ -8,7 +8,6 @@ import Admin from './components/AdminPage';
 function App() {
   // Функция для проверки, является ли пользователь администратором
   const isAdmin = () => {
-    console.log();
     return localStorage.getItem('role') === 'admin';
   };
   return (

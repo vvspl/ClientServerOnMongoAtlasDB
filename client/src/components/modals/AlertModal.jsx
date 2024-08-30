@@ -1,7 +1,9 @@
 import { Modal, Box, Typography, Button } from '@mui/material';
 import { confirmModal } from '../../styles/styles';
+import PropTypes from 'prop-types';
 
 function AlertModal({ open, handleClose, text }) {
+  console.log(open);
   return (
     <Modal
       open={open}
@@ -25,5 +27,11 @@ function AlertModal({ open, handleClose, text }) {
     </Modal>
   );
 }
+
+AlertModal.propTypes = {
+  handleClose: PropTypes.func,
+  text: PropTypes.string,
+  open: PropTypes.bool,
+};
 
 export default AlertModal;
